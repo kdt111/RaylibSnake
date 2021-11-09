@@ -1,9 +1,13 @@
+//Standard headers
+#include <memory>
+
+//Required headers
 #include "include/raylib.h"
 #include "include/engine.h"
 
-#ifndef WINDOW_NAME
-#define WINDOW_NAME "Sample window"
-#endif
+//Implementation files
+#include "impl/mainmenu.cpp"
+
 
 void UpdateLoop();
 void DrawLoop();
@@ -15,12 +19,14 @@ int main(void)
 
 	HideCursor();
 
+	std::unique_ptr<MainMenu> mainMenu = std::make_unique<MainMenu>();
+
 	while(true)
 	{
 		UpdateLoop();
 		DrawLoop();
 		
-		if(WindowShouldClose() && !IsKeyPressed(KEY_ESCAPE)) break;
+		if((WindowShouldClose() && !IsKeyPressed(KEY_ESCAPE)) || Engine::ShouldExit()) break;
 	}
 
 	CloseWindow();
@@ -28,7 +34,7 @@ int main(void)
 
 void UpdateLoop()
 {
-
+	Engine::Update();
 }
 
 void DrawLoop()
@@ -36,18 +42,8 @@ void DrawLoop()
 	BeginDrawing();
 	ClearBackground(Engine::CLEAR_COLOR);
 
-	switch (Engine::GetCurrentGameState())
-	{
-		case Engine::GameState::MainMenu:
-			DrawText("MainMenu", 20, 20, Engine::DEF_FONT_SIZE, BLACK);
-			break;
-		case Engine::GameState::InGame:
-			DrawText("InGame", 20, 20, Engine::DEF_FONT_SIZE, BLACK);
-			break;
-		case Engine::GameState::Paused:
-			DrawText("Paused", 20, 20, Engine::DEF_FONT_SIZE, BLACK);
-			break;
-	}
+	Engine::Draw();
 
+	DrawFPS(20, 20);
 	EndDrawing();
 }

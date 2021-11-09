@@ -5,10 +5,10 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
-			"name": "g++ - Kompiluj i debuguj aktywny plik",
+			"name": "Compile and debug",
 			"type": "cppdbg",
 			"request": "launch",
-			"program": "${workspaceFolderBasename}_debug.exe",
+			"program": "${workspaceFolder}/${workspaceFolderBasename}_debug.exe",
 			"args": [],
 			"stopAtEntry": true,
 			"cwd": "${workspaceFolder}",
