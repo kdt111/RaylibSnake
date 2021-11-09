@@ -26,13 +26,11 @@
 *.a
 *.lib
 
+# Include raylib static library
+!lib/libraylib.a
+
 # Executables
 *.exe
 *.out
 *.app
 
-# Builds location
-builds/
-
-# VS code specific folder
-.vscode/
