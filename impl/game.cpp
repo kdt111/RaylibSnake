@@ -2,8 +2,8 @@
 #include <math.h>
 #include <stdio.h>
 
-#include "../include/config.h"
-#include "../include/raylib.h"
+#include "config.h"
+#include "raylib.h"
 
 //Main game
 namespace Game

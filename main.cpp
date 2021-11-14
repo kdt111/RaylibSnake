@@ -3,8 +3,8 @@
 #include <time.h>
 
 //Required headers
-#include "include/raylib.h"
-#include "include/config.h"
+#include "raylib.h"
+#include "config.h"
 
 //Implementation files
 #include "impl/mainmenu.cpp"

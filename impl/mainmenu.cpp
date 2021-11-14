@@ -1,8 +1,8 @@
 #pragma once
 #include <math.h>
 
-#include "../include/config.h"
-#include "../include/raylib.h"
+#include "config.h"
+#include "raylib.h"
 
 //Start menu
 namespace MainMenu
