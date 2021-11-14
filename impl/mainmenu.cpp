@@ -1,64 +1,42 @@
 #pragma once
+#include <math.h>
 
-#include "../include/mainmenu.h"
-#include "../include/engine.h"
+#include "../include/config.h"
 #include "../include/raylib.h"
 
-MainMenu::MainMenu()
+//Start menu
+namespace MainMenu
 {
-	Engine::RegisterToUpdate(this);
-	Engine::RegisterToDraw(this);
-}
+	//Split the text into two lines to center them easier
+	const char* START_GAME_TEXTS[] = {
+		"PRESS [SPACE]",
+		"TO START THE GAME"
+	};
 
-MainMenu::~MainMenu()
-{
-	Engine::UnregisterFormUpdate(this);
-	Engine::UnregisterFormDraw(this);
-}
+	const char* TITLE = "RAYLIB SNAKE";
+	const char* HIGH_SCORE_TEXT = "Best score: %i";
+	const char* FOOTNOTE = "Created by Jan Malek";
 
-void MainMenu::Draw(float deltaTime) const
-{
-	if (Engine::GetCurrentGameState() == Engine::GameState::MainMenu)
+	void Draw()
 	{
-		unsigned int baseOffset = Engine::TITLE_FONT_SIZE + 20 + MAIN_MENU_OPTION_COUNT * Engine::DEF_FONT_SIZE + (MAIN_MENU_OPTION_COUNT - 1) * menuOptionsOffset;
-		DrawText(WINDOW_NAME, Engine::GetTextCenterX(WINDOW_NAME, Engine::TITLE_FONT_SIZE), baseOffset, Engine::TITLE_FONT_SIZE, GREEN);
-		unsigned int currentOffset = Engine::TITLE_FONT_SIZE + baseOffset + 20;
-		for (size_t i = 0; i < MAIN_MENU_OPTION_COUNT; i++)
+		//Calculate the offset from the egde of the screen, so that the text is centered
+		int xPos = (Config::GAME_SIZE - MeasureText(TITLE, Config::TITLE_FONT_SIZE)) * 0.5f;
+		DrawText(TITLE, xPos, 100, Config::TITLE_FONT_SIZE, BLACK);
+
+		const char* highScore = TextFormat(HIGH_SCORE_TEXT, Config::CURRENT_HIGH_SCORE);
+		xPos = (Config::GAME_SIZE - MeasureText(highScore, Config::FONT_SIZE)) * 0.5f;
+		DrawText(highScore, xPos, 100 + Config::TITLE_FONT_SIZE + 10, Config::FONT_SIZE, BLACK);
+		//Flash the text (1s on, 1s off)
+		if (sin(GetTime() * 2 * PI) > 0)
 		{
-			const char* text = currentMainMenuOption == i ? TextFormat(selectedOptionFormat, menuOptions[i]) : menuOptions[i];
-			DrawText(text, Engine::GetTextCenterX(text, Engine::DEF_FONT_SIZE), currentOffset, Engine::DEF_FONT_SIZE, BLACK);
-			currentOffset += Engine::DEF_FONT_SIZE + menuOptionsOffset;
-		}
-	}
-}
-
-void MainMenu::Update(float deltaTime)
-{
-	if(Engine::GetCurrentGameState() == Engine::GameState::MainMenu)
-	{
-		if(IsKeyPressed(KEY_UP))
-			currentMainMenuOption = (currentMainMenuOption - 1) % MAIN_MENU_OPTION_COUNT;
-		else if(IsKeyPressed(KEY_DOWN))
-			currentMainMenuOption = (currentMainMenuOption + 1) % MAIN_MENU_OPTION_COUNT;
-
-		if(IsKeyPressed(KEY_ENTER))
-		{
-			if(currentMainMenuOption == 0) //New game
+			for (int i = 0; i < 2; i++)
 			{
-
-			}
-			else if(currentMainMenuOption == 1) //Options
-			{
-
-			}
-			else if(currentMainMenuOption == 2) //Leaderboard
-			{
-
-			}
-			else //Exit
-			{
-				Engine::Exit();
+				int xPos = (Config::GAME_SIZE - MeasureText(START_GAME_TEXTS[i], Config::FONT_SIZE)) * 0.5f;
+				int yPos = (Config::GAME_SIZE - Config::FONT_SIZE * 2) * 0.5f + i * Config::FONT_SIZE + 5;
+				DrawText(START_GAME_TEXTS[i], xPos, yPos, Config::FONT_SIZE, BLACK);
 			}
 		}
+		xPos = (Config::GAME_SIZE - MeasureText(FOOTNOTE, Config::FONT_SIZE)) * 0.5f;
+		DrawText(FOOTNOTE, xPos, Config::GAME_SIZE - Config::FONT_SIZE - 20, Config::FONT_SIZE, BLACK);
 	}
 }

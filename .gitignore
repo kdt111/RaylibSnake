@@ -34,3 +34,5 @@
 *.out
 *.app
 
+# Save state files
+*.data

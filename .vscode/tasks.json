@@ -13,7 +13,6 @@
 				"-Wall",
 				"-Wno-missing-braces",
 				"-mwindows", //Diable console output
-				"-DWINDOW_NAME=\"${workspaceFolderBasename}\"",
 				"-I",
 				"include/",
 				"-L",
@@ -42,7 +41,7 @@
 				"${workspaceFolderBasename}_debug.exe",
 				"-Wall",
 				"-Wno-missing-braces",
-				"-DWINDOW_NAME=\"${workspaceFolderBasename} (DEBUG)\"",
+				"-DDEBUG",
 				"-I",
 				"include/",
 				"-L",
