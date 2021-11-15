@@ -23,8 +23,8 @@ This is a simple clone of the game snake using [raylib 4.0](https://www.raylib.c
 
 ## Compiling the project
 1. On Windows:
-	- If you are using MinGW and VSCode you can use the provided tasks by pressing `Ctrl` + `Shift` + `B` and select task `Build project`
-	- If you are not using VSCode, but are using MinGW then the project can be compiled using the following command, when you are in the project's root folder: 
+	- If you are using `MinGW` and `VSCode` you can use the provided tasks by pressing `Ctrl` + `Shift` + `B` and select task `Build project`
+	- If you are not using `VSCode`, but are using `MinGW` then the project can be compiled using the following command, when you are in the project's root folder: 
   ```
   g++ main.cpp -o RaylibSnake.exe -Ofast -Wall -Wno-missing-braces -mwindows -I include/ -L lib/ -lraylib -lopengl32 -lgdi32 -lwinmm"
   ```
@@ -37,12 +37,12 @@ This is a simple clone of the game snake using [raylib 4.0](https://www.raylib.c
 	- [LICENSE](LICENSE): raylib's licence file
 	- [README.md](README.md): This file
 2. In the [include](include) folder:
-	- [raygui.h](include/raygui.h), [raylib.h](include/raylib.h), [raymath.h](include/raymath.h) and [rlgl.h](include/rlgl.h): Header files for different modules of raylib
+	- [raylib.h](include/raylib.h): raylib's main header file
 	- [config.h](include/config.h): Different game configuration constants (eg. game speed, font size)
 3. In the [lib](lib) folder:
-	- [libraylib.a](lib/libraylib.a): Compiled library file of raylib, used for static linking. This file is windows specific and was compiled using `MinGW`
+	- [libraylib.a](lib/libraylib.a): Compiled library file of raylib, used for static linking. This file is Windows specific and was compiled using `MinGW`
 4. In the [impl](impl) folder:
 	- [game.cpp](impl/game.cpp): The logic for the game (eg. snake movement, collision detection, score counting)
 	- [mainmenu.cpp](impl/mainmenu.cpp): The logic for drawing the entry screen of the game (eg. game title)
 5. In the [.vscode](.vscode) folder:
-	- [tasks.json](.vscode/tasks.json): Build tasks for VSCode, this file is only used when the project is opened in VSCode
+	- [tasks.json](.vscode/tasks.json): Build tasks for `VSCode`, this file is only used when the project is opened in `VSCode`
