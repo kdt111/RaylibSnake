@@ -1,6 +1,8 @@
 #pragma once
 #include <math.h>
-#include <stdio.h>
+#ifdef DEBUG
+#include <iostream>
+#endif
 
 #include "config.h"
 #include "raylib.h"
@@ -36,7 +38,7 @@ namespace Game
 		//Checks if the provided position matches the pieces current position
 		bool PositionMatches(const Vector2& other) const
 		{
-			return position.x == other.x && position.y == other.y;
+			return (int)position.x == (int)other.x && (int)position.y == (int)other.y;
 		}
 	};
 	
@@ -72,13 +74,23 @@ namespace Game
 			applePosition.x = Config::CELL_SIZE * GetRandomValue(0, cellAmount);
 			applePosition.y = Config::CELL_SIZE * GetRandomValue(0, cellAmount);
 			SnakePiece* current = tail;
+			bool validPosition = true;
 			while(current != nullptr)
 			{
+				//If random position is on the snake, then mark it as invalid breake out of the loop
 				if(current->PositionMatches(applePosition))
+				{
+					#ifdef DEBUG
+					std::cout << "Invalid position detected" << std::endl;
+					#endif
+					validPosition = false;
 					break;
+				}
 				current = current->prev;
 			}
-			break;
+			//If after checking apple's position is still valid then breake out of this loop
+			if(validPosition)
+				break;
 		}
 	}
 

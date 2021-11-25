@@ -26,7 +26,7 @@ This is a simple clone of the game snake using [raylib 4.0](https://www.raylib.c
 	- If you are using `MinGW` and `VSCode` you can use the provided tasks by pressing `Ctrl` + `Shift` + `B` and select task `Build project`
 	- If you are not using `VSCode`, but are using `MinGW` then the project can be compiled using the following command, when you are in the project's root folder: 
   ```
-  g++ main.cpp -o RaylibSnake.exe -Ofast -Wall -Wno-missing-braces -mwindows -I include/ -L lib/ -lraylib -lopengl32 -lgdi32 -lwinmm"
+  g++ main.cpp -o RaylibSnake.exe -Ofast -Wall -Wno-missing-braces -mwindows -I include/ -L lib/ -lraylib -lopengl32 -lgdi32 -lwinmm -static"
   ```
 2. On other platforms and compilers:
 	- If raylib works on your platform of choice the you probably will be able to compile the project there. But I haven't tested that, so you will have to figure it out yourself

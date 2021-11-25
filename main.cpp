@@ -31,6 +31,10 @@ int main(void)
 	SetRandomSeed(time(NULL));
 	SetWindowMinSize(Config::GAME_SIZE, Config::GAME_SIZE);
 
+	#ifndef DEBUG
+	SetTraceLogLevel(LOG_NONE);
+	#endif
+
 	Config::CURRENT_HIGH_SCORE = LoadStorageValue(Config::HIGH_SCORE_STORE);
 
 	//Render texture will be used to scale the game to the window size
