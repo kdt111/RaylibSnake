@@ -2,6 +2,8 @@
 
 A simple snake game made using [raylib](https://www.raylib.com) and C++
 
+![Gameplay gif](ReadmeGif.gif)
+
 ## Project overwiew
 
 This is a simple clone of the game snake using [raylib 4.0](https://www.raylib.com). Created to learn how different things in this library work
@@ -29,7 +31,7 @@ This is a simple clone of the game snake using [raylib 4.0](https://www.raylib.c
   g++ main.cpp -o RaylibSnake.exe -Ofast -Wall -Wno-missing-braces -mwindows -I include/ -L lib/ -lraylib -lopengl32 -lgdi32 -lwinmm -static"
   ```
 2. On other platforms and compilers:
-	- If raylib works on your platform of choice the you probably will be able to compile the project there. But I haven't tested that, so you will have to figure it out yourself
+	- If raylib works on your platform of choice the you probably will be able to compile the project there. But I haven't tested that, so you will have to figure it out yourself. Some information about it can be found on [raylib's wiki](https://github.com/raysan5/raylib/wiki/)
 
 ## File overview
 1. In the root folder:
