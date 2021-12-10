@@ -26,8 +26,11 @@
 *.a
 *.lib
 
-# Include raylib static library
-!lib/libraylib.a
+# vscode folders
+.vscode
+
+# Cmake build folder
+build
 
 # Executables
 *.exe
