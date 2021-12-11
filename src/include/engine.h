@@ -7,6 +7,7 @@ namespace Engine
 	extern const int CELL_SIZE; 			// How many pixels does each cell of the game take
 	extern const int FONT_SIZE;				// Font size of regular text
 	extern const int TITLE_FONT_SIZE;		// Font size of bigger text
+	extern const int TARGET_FRAMERATE;		// Framerate of the game
 
 	// Initializes the engine and the window
 	void Init();

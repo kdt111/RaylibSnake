@@ -8,12 +8,12 @@
 
 namespace Engine
 {
-	const int GAME_SIZE = 800;
+	const int GAME_SIZE = 600;
 	const int CELL_SIZE = 20;
 	const int FONT_SIZE = 30;
-	const int TITLE_FONT_SIZE = 60;
+	const int TITLE_FONT_SIZE = 50;
 
-	static int targetFramerate = 15;
+	const int TARGET_FRAMERATE = 15;
 	static RenderTexture2D target;
 	static Color clearColor = WHITE;
 
@@ -116,7 +116,7 @@ namespace Engine
 		// Window creation and configuration
 		SetConfigFlags(FLAG_VSYNC_HINT | FLAG_WINDOW_RESIZABLE);
 		InitWindow(GAME_SIZE, GAME_SIZE, windowTitle);
-		SetTargetFPS(targetFramerate);
+		SetTargetFPS(TARGET_FRAMERATE);
 		SetRandomSeed(time(0));
 		SetWindowMinSize(GAME_SIZE, GAME_SIZE);
 

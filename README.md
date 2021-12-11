@@ -24,14 +24,22 @@ This is a simple clone of the game snake using [raylib 4.0](https://www.raylib.c
 1. If you just want to play the game and use Windows the you can download and run the file in the `Releases` section
 
 ## Compiling the project
-1. On Windows:
-	- If you are using `MinGW` and `VSCode` you can use the provided tasks by pressing `Ctrl` + `Shift` + `B` and select task `Build project`
-	- If you are not using `VSCode`, but are using `MinGW` then the project can be compiled using the following command, when you are in the project's root folder: 
-  ```
-  g++ main.cpp -o RaylibSnake.exe -Ofast -Wall -Wno-missing-braces -mwindows -I include/ -L lib/ -lraylib -lopengl32 -lgdi32 -lwinmm -static"
-  ```
-2. On other platforms and compilers:
-	- If raylib works on your platform of choice the you probably will be able to compile the project there. But I haven't tested that, so you will have to figure it out yourself. Some information about it can be found on [raylib's wiki](https://github.com/raysan5/raylib/wiki/)
+1. Compiling for desktop:
+	- Project uses `CMake` and will fetch required dependencies automaticly if they are not detected
+2. Compiling for Web:
+Project can be compiled for web using `emscripten`. To do that you nead to:
+	- Have `emscripten` installed
+	- From the 'build' folder delete:
+		- `CMakeCashe.txt` file
+		- `CMakeFiles` folder
+	- From the command prompt run:
+	```
+	emcmake cmake -S . -B build -DPLATFORM=Web -DCMAKE_BUILD_TYPE=Release
+	```
+	- If the project was configured succesfully then run:
+	```
+	cmake --build build
+	```
 
 ## File overview
 1. In the root folder:
