@@ -16,8 +16,8 @@ if(CMAKE_BUILD_TYPE MATCHES Debug)
 	target_compile_definitions(${PROJECT_NAME} PRIVATE DEBUG)
 else()
 	target_compile_options(${PROJECT_NAME} PRIVATE -O3)
-	if (NOT EMSCRIPTEN)
-		target_link_options(${PROJECT_NAME} PRIVATE -mwindows) # Disable console output if flag is supported
+	if (MINGW)
+		target_link_options(${PROJECT_NAME} PRIVATE -mwindows) # Disable console output if flag is supported (MinGW only)
 	endif()
 endif()
 
